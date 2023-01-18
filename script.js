@@ -70,7 +70,7 @@
             return `id - ${this.id} product - ${this.title} manufacture - "${this.manufacture.toUpperCase()}" price - ${this.price} kind - ${this.kind}`;
         }
     }
-    class Vine extends Products{
+    class Wine extends Products{
         alcohol;
 
         constructor(id, title, manufacture, price, alcohol) {
@@ -103,6 +103,7 @@
             return [...this.products];
         }
         getByType(type){
+            return this.products.filter((value) => value.constructor.name === type);
         }
     }
 
@@ -117,11 +118,11 @@
     const chock3 = new Chocolate(113, 'Rosemarie', 'Strauss', 24, 'milk' );
     const chock4 = new Chocolate(114, 'Ferrero roshe', 'Ferrero', 40, 'milk' );
     const chock5 = new Chocolate(115, 'Excellence', 'Lindt', 20, 'dark' );
-    const vine1 = new Vine(121, 'Kaberne', 'Carmel', 50, 12.5);
-    const vine2 = new Vine(122, 'Vodka', 'Khortitsa', 80, 40);
-    const vine3 = new Vine(123, 'Har hermon', 'Yarden', 60, 12.5);
-    const vine4 = new Vine(124, 'Khvanchkara', 'Genazvale', 50, 12.5);
-    const vine5 = new Vine(125, 'Jack', 'Jack Daniels', 100, 40);
+    const wine1 = new Wine(121, 'Kaberne', 'Carmel', 50, 12.5);
+    const wine2 = new Wine(122, 'Vodka', 'Khortitsa', 80, 40);
+    const wine3 = new Wine(123, 'Har hermon', 'Yarden', 60, 12.5);
+    const wine4 = new Wine(124, 'Khvanchkara', 'Genazvale', 50, 12.5);
+    const wine5 = new Wine(125, 'Jack', 'Jack Daniels', 100, 40);
     store.addProduct(milk1);
     store.addProduct(milk2);
     store.addProduct(milk3);
@@ -132,12 +133,14 @@
     store.addProduct(chock3);
     store.addProduct(chock4);
     store.addProduct(chock5);
-    store.addProduct(vine1);
-    store.addProduct(vine2);
-    store.addProduct(vine3);
-    store.addProduct(vine4);
-    store.addProduct(vine5);
+    store.addProduct(wine1);
+    store.addProduct(wine2);
+    store.addProduct(wine3);
+    store.addProduct(wine4);
+    store.addProduct(wine5);
     store.getAllProducts().forEach(item => {
         console.log(item);
     });
+    console.log(store.getByType('Wine'));
+
 })();
