@@ -15,9 +15,9 @@
     const content = document.getElementById('content');
     const productList = document.getElementById('productsLink');
     const addProd = document.getElementById('addLink');
+    const cards = document.querySelectorAll('.card');
     // const cards = [];
     const nav_list = document.getElementById('nav_list');
-
 
     formLoader.addEventListener('change', e=>{
         let productType = e.target.value;
@@ -88,7 +88,7 @@
             }
         }
         function card(product) {
-            return `<div class="card">
+            return `<div class="card active">
                    <h2>${product.constructor.name}</h2>
                    <h3>${product.title}</h3>
                    <h3>${product.manufacture}</h3>
@@ -106,4 +106,17 @@
         renderProductList(store.getAllProducts());
     }
 
+    nav_list.addEventListener('click', e => {
+        console.log(e.target.getAttribute('data-name'));
+        const prodType = e.target.getAttribute('data-name');
+        if(prodType === 'Milk'){
+            renderProductList(store.getByType('Milk'));
+        }else if(prodType === 'Wine'){
+            renderProductList(store.getByType('Wine'));
+        }else if(prodType === 'Chocolate'){
+            renderProductList(store.getByType('Chocolate'));
+        }else{
+            renderProductList(store.getAllProducts());
+        }
+    });
 })();

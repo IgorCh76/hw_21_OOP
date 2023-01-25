@@ -51,6 +51,9 @@ ul
     color: inherit;
     text-transform: uppercase;
 }
+.active{
+    display: block;
+}
 
 .nav ul li.active
 {
